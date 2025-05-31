@@ -1,0 +1,37 @@
+---
+import { getCollection, type CollectionEntry, getEntries, getEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import H1 from "../../components/H1.astro";
+import Main from "../../components/Main.astro"
+import { Image } from "astro:assets";
+
+export const prerender = false
+
+const {slug} = Astro.params
+
+const posts = await getCollection("posts")
+const post = posts.find((entry) => entry.slug === slug)
+
+if(!post){
+  return Astro.redirect('/404')
+}
+
+const { Content } = await post.render();
+
+---
+
+<Layout title={post.data.title}>
+  <Main>
+    <H1 text={post.data.title} />
+    <Image
+      src={post.data.image}
+      width={1024}
+      height={600 / 1.5}
+      alt={post.data.title}
+      class="rounded-2xl shadow-xl mb-4 aspect-thumbnail object-cover"
+    />
+    <div class="prose prose-2xl overflow-visible relative mb-20">
+      <Content />
+    </div>
+</Main>
+</Layout>

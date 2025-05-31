@@ -1,0 +1,13 @@
+---
+import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/Layout.astro";
+import Main from "../components/Main.astro";
+
+export const prerender = true
+---
+
+<Layout title="Rhythm Nation Blog">
+  <Main>
+    <Welcome />
+  </Main>
+</Layout>
