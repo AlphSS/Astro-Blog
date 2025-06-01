@@ -2,6 +2,7 @@
 import Welcome from "../components/Welcome.astro";
 import Layout from "../layouts/Layout.astro";
 import Main from "../components/Main.astro";
+import Video from "../components/Video.astro";
 
 export const prerender = true
 ---
@@ -9,5 +10,8 @@ export const prerender = true
 <Layout title="Rhythm Nation Blog">
   <Main>
     <Welcome />
+    <Video server:defer >
+      
+    </Video>
   </Main>
 </Layout>
