@@ -2,7 +2,7 @@
 import Welcome from "../components/Welcome.astro";
 import Layout from "../layouts/Layout.astro";
 import Main from "../components/Main.astro";
-import Video from "../components/Video.astro";
+import Video from "../components/Video.jsx";
 
 export const prerender = true
 ---
@@ -10,8 +10,19 @@ export const prerender = true
 <Layout title="Rhythm Nation Blog">
   <Main>
     <Welcome />
-    <Video server:defer >
-      
-    </Video>
+    <Video client:load/>
+    
+    <button class="bg-blue-950 text-2xl text-white h-15 w-full rounded-3xl m-5 hover:bg-blue-600" id="my-btn">Click Me</button>
+
+    <script>
+      document.addEventListener('DOMContentLoaded',()=>{
+        const button = document.getElementById('my-btn')
+        if(button){
+          button.addEventListener('click',()=>{
+            alert('Button Clicked')
+          })
+        }
+      })
+    </script>
   </Main>
 </Layout>
