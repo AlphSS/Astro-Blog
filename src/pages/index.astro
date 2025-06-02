@@ -10,16 +10,17 @@ export const prerender = true
 <Layout title="Rhythm Nation Blog">
   <Main>
     <Welcome />
-    <Video client:load/>
+    <button class="bg-blue-950 text-2xl text-white h-200 w-full rounded-3xl m-5 hover:bg-blue-600" id="my-btn">Click Me</button>
+
+    <Video client:visible/>
     
-    <button class="bg-blue-950 text-2xl text-white h-15 w-full rounded-3xl m-5 hover:bg-blue-600" id="my-btn">Click Me</button>
 
     <script>
       document.addEventListener('DOMContentLoaded',()=>{
         const button = document.getElementById('my-btn')
         if(button){
           button.addEventListener('click',()=>{
-            alert('Button Clicked')
+            alert('Button Clicked normally')
           })
         }
       })
