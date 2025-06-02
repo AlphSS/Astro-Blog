@@ -2,7 +2,7 @@
 import Welcome from "../components/Welcome.astro";
 import Layout from "../layouts/Layout.astro";
 import Main from "../components/Main.astro";
-import Video from "../components/Video.jsx";
+import Button from "../components/Button.jsx";
 
 export const prerender = true
 ---
@@ -12,7 +12,7 @@ export const prerender = true
     <Welcome />
     <button class="bg-blue-950 text-2xl text-white h-200 w-full rounded-3xl m-5 hover:bg-blue-600" id="my-btn">Click Me</button>
 
-    <Video client:visible/>
+    <Button client:visible/>
     
 
     <script>
