@@ -1,19 +1,22 @@
 ---
+import Layout from "../layouts/Layout.astro";
+import Main from "../components/Main.astro";
+import H1 from "../components/H1.astro";
+import PostList from "../components/PostList";
 import { getCollection } from "astro:content";
 
-const posts = await getCollection("posts")
+const posts = await getCollection("posts");
 
-import Layout from "../layouts/Layout.astro"
-import Main from "../components/Main.astro"
-import H1 from "../components/H1.astro"
-import PostList from "../components/PostList.astro";
+if(!posts){
+    return Astro.redirect('/404')
+}
 ---
 
 <Layout title="Blog Posts">
-    <Main>
-        <H1 text="Blogs"></H1>
-        {posts.map((post) => (
-            <PostList posts={posts}/>
-        ))}
-    </Main>
+  <Main>
+    <H1 text="Blogs" />
+    {posts.map((post)=>(
+        <PostList posts={posts} />
+    ))}
+  </Main>
 </Layout>
